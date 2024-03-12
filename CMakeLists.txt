@@ -3,14 +3,12 @@ cmake_minimum_required(VERSION 3.20)
 ## make sure to use --triplet=x64-windows when doing vcpckg install
 
 set(CMAKE_BUILD_TYPE "Release")
-# set the project name
 project(Analysis)
 
 set(OpenCV_DIR "${PROJECT_SOURCE_DIR}/vcpkg/packages/opencv4_x64-windows/share/opencv/")
 
 find_library(TIFF "${PROJECT_SOURCE_DIR}/vcpkg/packages/tiff_x64-windows/bin/tiff.dll")
 
-find_package(unofficial-graphicsmagick CONFIG REQUIRED)
 find_package(OpenCV CONFIG REQUIRED)
 find_package(TIFF REQUIRED) 
 
@@ -25,7 +23,6 @@ FOREACH(EXECUTABLE ${EXECUTABLE_LIST})
 					${OpenCV_LIBS}
 					${TIFF_LIBS}
 					${TIFF_LIBRARY}
-					${unofficial-graphicsmagick_LIBS}
 	)
 	target_link_libraries(${EXECUTABLE} PUBLIC
 					"${PROJECT_SOURCE_DIR}/LimFileStatic.lib"
@@ -38,7 +35,6 @@ FOREACH(EXECUTABLE ${EXECUTABLE_LIST})
 						${PROJECT_BINARY_DIR}
 						${OpenCV_INCLUDE_DIRS}
 						${TIFF_INCLUDE_DIRS}
-						${unofficial-graphicsmagick_INCLUDE_DIRS}
 						) 
 
 	set_property (TARGET ${EXECUTABLE}
