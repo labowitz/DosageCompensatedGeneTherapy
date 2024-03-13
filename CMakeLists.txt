@@ -1,15 +1,22 @@
 cmake_minimum_required(VERSION 3.20)
 
 ## make sure to use --triplet=x64-windows when doing vcpckg install
-
-set(CMAKE_BUILD_TYPE "Release")
 project(Analysis)
+set(CMAKE_BUILD_TYPE "Release")
 
-set(OpenCV_DIR "${PROJECT_SOURCE_DIR}/vcpkg/packages/opencv4_x64-windows/share/opencv/")
+set(CMAKE_TOOLCHAIN_FILE "${PROJECT_SOURCE_DIR}/vcpkg/scripts/buildsystems/vcpkg.cmake")
+set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "VCPKG Target Triplet to use")
+set(CMAKE_PREFIX_PATH "${PROJECT_SOURCE_DIR}/vcpkg/packages")
 
-find_library(TIFF "${PROJECT_SOURCE_DIR}/vcpkg/packages/tiff_x64-windows/bin/tiff.dll")
 
-find_package(OpenCV CONFIG REQUIRED)
+set(OpenCV_DIR "${PROJECT_SOURCE_DIR}/vcpkg/packages/opencv4_x64-windows/share/opencv4/")
+set(TIFF_INCLUDE_DIR "${PROJECT_SOURCE_DIR}/vcpkg/packages/tiff_x64-windows/include")
+set(TIFF_LIBRARY "${PROJECT_SOURCE_DIR}/vcpkg/packages/tiff_x64-windows/lib/tiff.lib")
+
+
+#find_library(TIFF "${PROJECT_SOURCE_DIR}/vcpkg/packages/tiff_x64-windows/bin/tiff.dll")
+
+find_package(OpenCV REQUIRED)
 find_package(TIFF REQUIRED) 
 
 
