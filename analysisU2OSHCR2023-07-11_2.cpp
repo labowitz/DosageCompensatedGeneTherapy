@@ -4,8 +4,8 @@
 
 int main() {
 
-	FILE* dots_csv = fopen("dots_0711.csv", "w");
-	FILE* nuclei_csv = fopen("nuclei_0711.csv", "w");
+	FILE* dots_csv = fopen("dots_0711_new.csv", "w");
+	FILE* nuclei_csv = fopen("nuclei_0711_new.csv", "w");
 	fprintf(dots_csv, "x,y,z,cn_id,cn_x,cn_y,cn_z,channel,condition,pos,intensity\n");
 	fprintf(nuclei_csv, "cn_id,cn_x,cn_y,cn_z,zmin,zmax,size,validSize,sum405,sum488,sum561,sum594,condition,pos\n");
 	fclose(dots_csv);
@@ -16,18 +16,10 @@ int main() {
 		std::make_tuple("FISH_shr1x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
 		std::make_tuple("FISH_shr4x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
 		std::make_tuple("FISH_0x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("FISH_untransfected", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("FISH_2mep0x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("FISH_2mep1x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("FISH_pDR60", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("FISH_18x4", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("FISH_19x4", std::vector<int> {1,2,3,4,5,6,7,8,9,10})
 	};
-	// format
-	// mouse11_slice2_#3_Single 488
 
 	// PARAMETERS
-	char* base_dir = "E:\\U2OSFishvsHCR2023-06-29\\";
+	char* base_dir = "U2OSFishvsHCR2023-06-29";
 	// segmentation parameters
 	int threshold_405_higher = 111;
 	int threshold_405_lower = 110;
@@ -403,8 +395,8 @@ int main() {
 			//std::vector<int> high_idx;
 
 			std::cout << "Writing data to csv files...";
-			FILE* dots_csv = fopen("dots_0711.csv", "a");
-			FILE* nuclei_csv = fopen("nuclei_0711.csv", "a");
+			FILE* dots_csv = fopen("dots_0711_new.csv", "a");
+			FILE* nuclei_csv = fopen("nuclei_0711_new.csv", "a");
 			for (int i = 0; i < nuclei1.size(); i++) {
 				int cn_x, cn_y, cn_z;
 				Nucleus nuc = *nuclei1.at(i);
@@ -456,10 +448,11 @@ int main() {
 			std::cout << "Done." << std::endl;
 
 			//displayBlobsInt(stack, width, height, depth, nuclei);
+			
+			
 
-			std::cout << "Displaying " << nuclei1.size() << " cells" << std::endl;
-
-			/* 			
+			/*
+			  std::cout << "Displaying " << nuclei1.size() << " cells" << std::endl; 			
 			int k = 0; 
 			int key = 0;
 			i = 0;
@@ -648,11 +641,6 @@ int main() {
 			delete[] stack;
 			delete[] stack488;
 			delete[] stack561;
-			//delete[] stack561fft;
-			//delete[] stack594fft;
-			//delete[] stack647fft;
-			//delete[] stack594ifft;
-			//delete[] stack647ifft;
 			delete[] float594;
 			delete[] float647;
 			delete[] stack594;

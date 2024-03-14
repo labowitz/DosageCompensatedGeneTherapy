@@ -7,8 +7,8 @@ int main() {
 	FILE* dots_csv; 
 	FILE* nuclei_csv; 
 
-	dots_csv = fopen("dots_1030.csv", "w");
-	nuclei_csv = fopen("nuclei_1030.csv", "w");
+	dots_csv = fopen("dots_1030_new.csv", "w");
+	nuclei_csv = fopen("nuclei_1030_new.csv", "w");
 	fprintf(dots_csv, "x,y,z,cn_id,cn_x,cn_y,cn_z,channel,condition,pos,intensity\n");
 	fprintf(nuclei_csv, "cn_id,cn_x,cn_y,cn_z,zmin,zmax,size,validSize,sum405,sum488,sum561,sum594,sum640,condition,pos\n");
 	fclose(dots_csv);
@@ -16,18 +16,17 @@ int main() {
 	
 
 	std::array<std::tuple<const char*, std::vector<int>>, 6> condition_stage = {
-		//std::make_tuple("mouse19_0x", std::vector<int> {3}),
-		//std::make_tuple("mouse12_1x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		std::make_tuple("mouse13_10x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("mouse20_CAGGFP", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("mouse25_CAGGFP", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
-		//std::make_tuple("mouse11_10xNEG", std::vector<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10 }),
+	  std::make_tuple("mouse19_0x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
+	  std::make_tuple("mouse12_1x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
+	  std::make_tuple("mouse13_10x", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
+	  std::make_tuple("mouse20_CAGGFP", std::vector<int> {1,2,3,4,5,6,7,8,9,10}),
+	  std::make_tuple("mouse11_10xNEG", std::vector<int> {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}),
 	};
 	// format
 	// mouse11_slice2_#3_Single 488
 
 	// PARAMETERS
-	char* base_dir = "D:\BrainHCR2023-10-26\\";
+	char* base_dir = "BrainHCR2023-10-26";
 	// segmentation parameters
 	int threshold_405_higher = 350;
 	int threshold_405_lower = 150;
@@ -387,8 +386,8 @@ int main() {
 			//std::vector<int> high_idx;
 
 			std::cout << "Writing data to csv files...";
-			FILE* dots_csv = fopen("dots_1030.csv", "a");
-			FILE* nuclei_csv = fopen("nuclei_1030.csv", "a");
+			FILE* dots_csv = fopen("dots_1030_new.csv", "a");
+			FILE* nuclei_csv = fopen("nuclei_1030_new.csv", "a");
 			for (int i = 0; i < nuclei1.size(); i++) {
 				int cn_x, cn_y, cn_z, cn_id;
 				Nucleus nuc = *nuclei1.at(i);
