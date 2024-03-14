@@ -25,7 +25,7 @@ git clone https://github.com/microsoft/vcpkg.git
 Then to install the dependencies:
 
 ```
-.\vcpkg\vcpkg install --triplet=x64-windows opencv4 
+.\vcpkg\vcpkg install --triplet=x64-windows-static opencv4 
 ```
 
 The `opencv4` library requires `tiff` which will be installed alongside
@@ -33,14 +33,14 @@ it.
 
 To check if the installation has succeeded, the directory
 
-`./vcpkg/packages/opencv4_x64-windows/share/opencv/`
+`./vcpkg/packages/opencv4_x64-windows-static/share/opencv/`
 
 should be created and populated with `.cmake` files. Additionally, the
 directories
 
 ```
-./vcpkg/packages/tiff_x64-windows/include
-./vcpkg/packages/tiff_x64-windows/lib
+./vcpkg/packages/tiff_x64-windows-static/include
+./vcpkg/packages/tiff_x64-windows-staticx/lib
 ```
 
 should be populated with header and lib files, respectively.
