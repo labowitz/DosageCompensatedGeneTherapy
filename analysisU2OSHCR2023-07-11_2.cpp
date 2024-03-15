@@ -4,8 +4,8 @@
 
 int main() {
 
-	FILE* dots_csv = fopen("dots_0711_new.csv", "w");
-	FILE* nuclei_csv = fopen("nuclei_0711_new.csv", "w");
+	FILE* dots_csv = fopen("../dots_0711_new.csv", "w");
+	FILE* nuclei_csv = fopen("../nuclei_0711_new.csv", "w");
 	fprintf(dots_csv, "x,y,z,cn_id,cn_x,cn_y,cn_z,channel,condition,pos,intensity\n");
 	fprintf(nuclei_csv, "cn_id,cn_x,cn_y,cn_z,zmin,zmax,size,validSize,sum405,sum488,sum561,sum594,condition,pos\n");
 	fclose(dots_csv);
@@ -19,7 +19,7 @@ int main() {
 	};
 
 	// PARAMETERS
-	char* base_dir = "U2OSFishvsHCR2023-06-29";
+	char* base_dir = "../U2OSFishvsHCR2023-06-29";
 	// segmentation parameters
 	int threshold_405_higher = 111;
 	int threshold_405_lower = 110;
@@ -395,8 +395,8 @@ int main() {
 			//std::vector<int> high_idx;
 
 			std::cout << "Writing data to csv files...";
-			FILE* dots_csv = fopen("dots_0711_new.csv", "a");
-			FILE* nuclei_csv = fopen("nuclei_0711_new.csv", "a");
+			FILE* dots_csv = fopen("../dots_0711_new.csv", "a");
+			FILE* nuclei_csv = fopen("../nuclei_0711_new.csv", "a");
 			for (int i = 0; i < nuclei1.size(); i++) {
 				int cn_x, cn_y, cn_z;
 				Nucleus nuc = *nuclei1.at(i);
@@ -550,7 +550,7 @@ int main() {
 
 			std::cout << "Writing maxprojects...";
 			char maxproject_dirname[500];
-			sprintf(maxproject_dirname, "%s\\maxprojects", base_dir);
+			sprintf(maxproject_dirname, "%s\\maxprojects_new", base_dir);
 			//auto created_new_directory
 				//= std::filesystem::create_directory(maxproject_dirname);
 			for (int k = 0; k < nuclei1.size();k++) {
