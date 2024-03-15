@@ -40,27 +40,25 @@ directories
 
 ```
 ./vcpkg/packages/tiff_x64-windows-static/include
-./vcpkg/packages/tiff_x64-windows-staticx/lib
+./vcpkg/packages/tiff_x64-windows-static/lib
 ```
 
 should be populated with header and lib files, respectively.
 
 To build the system, run:
 
-`cmake -DCMAKE_TOOLCHAIN_FILE=.\vcpkg\scripts\buildsystems\vcpkg.cmake .`
+`cmake -DCMAKE_TOOLCHAIN_FILE=.\vcpkg\scripts\buildsystems\vcpkg.cmake -DVCPKG_TARGET_TRIPLET=x64-windows-static -S . -B ./build -G "Visual Studio 17 2022"`
 
-This should produce a file called `Analysis.sln` which can be opened
-with Visual Studio. In Visual studio, change the build type from
-'Debug' to 'Release' and then use `Build > Build Solution`. 
+`cmake --build build --config Release`
 
-This should then create the files 
+This will then create the files 
 
 ```
-./Release/analysisBrain2023-10-30.exe
-./Release/analysisBrain2023-11-04.exe
-./Release/analysisU2OSHCR2023-07-11_2.exe 
+./build/Release/analysisBrain2023-10-30.exe
+./build/Release/analysisBrain2023-11-04.exe
+./build/Release/analysisU2OSHCR2023-07-11_2.exe 
 ```
 
-which can be called directly to run the analysis code on the images,
-provided that this repository is a subdirectory of the Dosage
-Compensated Gene Therapy magic folder. 
+which can be called directly to run the analysis code on the
+images. The files are dependent on the Nd2SDK `.dll` files in the root
+directory, so these programs should be called from the root.
