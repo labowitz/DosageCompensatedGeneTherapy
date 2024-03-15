@@ -62,3 +62,19 @@ This will then create the files
 which can be called directly to run the analysis code on the
 images. The files are dependent on the Nd2SDK `.dll` files in the root
 directory, so these programs should be called from the root.
+
+
+## File descriptions
+
+`ImageAnalysis.hpp`: an image analysis library 
+
+`analysisU2OSHCR2023-07-11_2.cpp`: analysis to generate data from
+images for figure 2 
+
+`analysisBrain2023-10-30.cpp`: analysis to generate data from images
+for Figure 3
+
+`analysisBrain2023-11-04.cpp`: analysis to generate data from images for
+Figure 4
+
+All other files are support files.
