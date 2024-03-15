@@ -7,7 +7,6 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 find_package(OpenCV REQUIRED)
 find_package(TIFF REQUIRED)
-# find_package(ZLIB REQUIRED) 
 
 set(EXECUTABLE_LIST analysisBrain2023-10-30 analysisBrain2023-11-04 analysisU2OSHCR2023-07-11_2)
 
@@ -18,8 +17,6 @@ FOREACH(EXECUTABLE ${EXECUTABLE_LIST})
 	target_link_libraries(${EXECUTABLE} PRIVATE
 					${OpenCV_LIBS}
 					${TIFF_LIBS}
-					#${ZLIB_LIBS}
-					#${TIFF_LIBRARY}
 	)
 	target_link_libraries(${EXECUTABLE} PRIVATE
 					"${PROJECT_SOURCE_DIR}/limfile-shared.lib"
@@ -30,7 +27,6 @@ FOREACH(EXECUTABLE ${EXECUTABLE_LIST})
 						${PROJECT_BINARY_DIR}
 						${OpenCV_INCLUDE_DIRS}
 						${TIFF_INCLUDE_DIRS}
-						#${ZLIB_INCLUDE_DIRS}
 						) 
 
 	set_property (TARGET ${EXECUTABLE}
